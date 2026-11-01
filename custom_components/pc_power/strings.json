@@ -1,0 +1,125 @@
+{
+  "title": "PC Power",
+  "config": {
+    "step": {
+      "user": {
+        "title": "电脑信息",
+        "description": "填写电脑的局域网 IP 和网卡 MAC（唤醒必需）。状态检测先试 ping，失败再试下面的备用端口。",
+        "data": {
+          "name": "名称",
+          "host": "IP 地址",
+          "mac": "MAC 地址",
+          "broadcast_address": "广播地址",
+          "scan_interval": "状态刷新间隔",
+          "boot_grace": "开机宽限期",
+          "tcp_ports": "备用检测端口"
+        },
+        "data_description": {
+          "mac": "格式 00:11:22:33:44:55",
+          "broadcast_address": "默认 255.255.255.255 即可；多网段或 VLAN 时填该网段的广播地址",
+          "boot_grace": "点开机后这段时间内开关保持“开”，避免家庭 App 里图块回弹",
+          "tcp_ports": "ping 被防火墙拦截时，用这些端口判断是否开机，逗号分隔；留空则只用 ping"
+        }
+      },
+      "shutdown": {
+        "title": "关机方式",
+        "description": "关机通过 SSH 执行系统关机命令。不需要关机可以选“只唤醒，不关机”。",
+        "data": {
+          "shutdown_method": "关机方式",
+          "os_type": "系统类型",
+          "ssh_port": "SSH 端口",
+          "ssh_user": "SSH 用户名",
+          "ssh_auth": "认证方式",
+          "ssh_password": "SSH 密码",
+          "ssh_key": "私钥文件路径",
+          "custom_command": "自定义关机命令"
+        },
+        "data_description": {
+          "ssh_user": "Windows 建议用本地管理员账号，例如 pc，不要带域名前缀",
+          "ssh_key": "Home Assistant 上的路径，例如 /config/.ssh/id_ed25519",
+          "custom_command": "留空则使用系统默认命令：Windows 为 shutdown /s /f /t 0"
+        }
+      }
+    },
+    "error": {
+      "invalid_mac": "MAC 地址格式不正确",
+      "missing_user": "请填写 SSH 用户名",
+      "missing_password": "请填写 SSH 密码",
+      "missing_key": "请填写私钥文件路径",
+      "missing_command": "请填写自定义关机命令"
+    },
+    "abort": {
+      "already_configured": "这台电脑已经添加过了"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "电脑信息",
+        "description": "修改连接与状态检测参数。",
+        "data": {
+          "name": "名称",
+          "host": "IP 地址",
+          "mac": "MAC 地址",
+          "broadcast_address": "广播地址",
+          "scan_interval": "状态刷新间隔",
+          "boot_grace": "开机宽限期",
+          "tcp_ports": "备用检测端口"
+        },
+        "data_description": {
+          "mac": "格式 00:11:22:33:44:55",
+          "broadcast_address": "默认 255.255.255.255 即可；多网段或 VLAN 时填该网段的广播地址",
+          "boot_grace": "点开机后这段时间内开关保持“开”，避免家庭 App 里图块回弹",
+          "tcp_ports": "ping 被防火墙拦截时，用这些端口判断是否开机，逗号分隔；留空则只用 ping"
+        }
+      },
+      "shutdown": {
+        "title": "关机方式",
+        "description": "修改 SSH 关机参数。",
+        "data": {
+          "shutdown_method": "关机方式",
+          "os_type": "系统类型",
+          "ssh_port": "SSH 端口",
+          "ssh_user": "SSH 用户名",
+          "ssh_auth": "认证方式",
+          "ssh_password": "SSH 密码",
+          "ssh_key": "私钥文件路径",
+          "custom_command": "自定义关机命令"
+        },
+        "data_description": {
+          "ssh_user": "Windows 建议用本地管理员账号，例如 pc，不要带域名前缀",
+          "ssh_key": "Home Assistant 上的路径，例如 /config/.ssh/id_ed25519",
+          "custom_command": "留空则使用系统默认命令：Windows 为 shutdown /s /f /t 0"
+        }
+      }
+    },
+    "error": {
+      "invalid_mac": "MAC 地址格式不正确",
+      "missing_user": "请填写 SSH 用户名",
+      "missing_password": "请填写 SSH 密码",
+      "missing_key": "请填写私钥文件路径",
+      "missing_command": "请填写自定义关机命令"
+    }
+  },
+  "selector": {
+    "shutdown_method": {
+      "options": {
+        "ssh": "SSH 远程关机",
+        "none": "只唤醒，不关机"
+      }
+    },
+    "os_type": {
+      "options": {
+        "windows": "Windows",
+        "linux": "Linux",
+        "custom": "自定义命令"
+      }
+    },
+    "ssh_auth": {
+      "options": {
+        "password": "密码",
+        "key": "私钥文件"
+      }
+    }
+  }
+}

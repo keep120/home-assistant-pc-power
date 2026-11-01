@@ -1,0 +1,125 @@
+{
+  "title": "PC Power",
+  "config": {
+    "step": {
+      "user": {
+        "title": "PC details",
+        "description": "Enter the LAN IP and the NIC MAC address (required for Wake-on-LAN). The state check tries ping first, then the fallback TCP ports below.",
+        "data": {
+          "name": "Name",
+          "host": "IP address",
+          "mac": "MAC address",
+          "broadcast_address": "Broadcast address",
+          "scan_interval": "State refresh interval",
+          "boot_grace": "Boot grace period",
+          "tcp_ports": "Fallback TCP ports"
+        },
+        "data_description": {
+          "mac": "Format 00:11:22:33:44:55",
+          "broadcast_address": "255.255.255.255 works for a flat LAN; use the subnet broadcast for VLANs",
+          "boot_grace": "The switch stays on for this long after you tap it, so the Home app tile does not bounce back",
+          "tcp_ports": "Used when ping is blocked by a firewall, comma separated; leave empty to use ping only"
+        }
+      },
+      "shutdown": {
+        "title": "Shutdown",
+        "description": "Shutdown runs an OS command over SSH. Choose \"Wake only\" if you do not need it.",
+        "data": {
+          "shutdown_method": "Shutdown method",
+          "os_type": "Operating system",
+          "ssh_port": "SSH port",
+          "ssh_user": "SSH username",
+          "ssh_auth": "Authentication",
+          "ssh_password": "SSH password",
+          "ssh_key": "Private key path",
+          "custom_command": "Custom shutdown command"
+        },
+        "data_description": {
+          "ssh_user": "On Windows use a local administrator account, without a domain prefix",
+          "ssh_key": "Path on the Home Assistant host, e.g. /config/.ssh/id_ed25519",
+          "custom_command": "Leave empty to use the default: shutdown /s /f /t 0 on Windows"
+        }
+      }
+    },
+    "error": {
+      "invalid_mac": "Invalid MAC address",
+      "missing_user": "SSH username is required",
+      "missing_password": "SSH password is required",
+      "missing_key": "Private key path is required",
+      "missing_command": "Custom shutdown command is required"
+    },
+    "abort": {
+      "already_configured": "This PC is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "PC details",
+        "description": "Edit connection and state detection settings.",
+        "data": {
+          "name": "Name",
+          "host": "IP address",
+          "mac": "MAC address",
+          "broadcast_address": "Broadcast address",
+          "scan_interval": "State refresh interval",
+          "boot_grace": "Boot grace period",
+          "tcp_ports": "Fallback TCP ports"
+        },
+        "data_description": {
+          "mac": "Format 00:11:22:33:44:55",
+          "broadcast_address": "255.255.255.255 works for a flat LAN; use the subnet broadcast for VLANs",
+          "boot_grace": "The switch stays on for this long after you tap it, so the Home app tile does not bounce back",
+          "tcp_ports": "Used when ping is blocked by a firewall, comma separated; leave empty to use ping only"
+        }
+      },
+      "shutdown": {
+        "title": "Shutdown",
+        "description": "Edit the SSH shutdown settings.",
+        "data": {
+          "shutdown_method": "Shutdown method",
+          "os_type": "Operating system",
+          "ssh_port": "SSH port",
+          "ssh_user": "SSH username",
+          "ssh_auth": "Authentication",
+          "ssh_password": "SSH password",
+          "ssh_key": "Private key path",
+          "custom_command": "Custom shutdown command"
+        },
+        "data_description": {
+          "ssh_user": "On Windows use a local administrator account, without a domain prefix",
+          "ssh_key": "Path on the Home Assistant host, e.g. /config/.ssh/id_ed25519",
+          "custom_command": "Leave empty to use the default: shutdown /s /f /t 0 on Windows"
+        }
+      }
+    },
+    "error": {
+      "invalid_mac": "Invalid MAC address",
+      "missing_user": "SSH username is required",
+      "missing_password": "SSH password is required",
+      "missing_key": "Private key path is required",
+      "missing_command": "Custom shutdown command is required"
+    }
+  },
+  "selector": {
+    "shutdown_method": {
+      "options": {
+        "ssh": "SSH shutdown",
+        "none": "Wake only"
+      }
+    },
+    "os_type": {
+      "options": {
+        "windows": "Windows",
+        "linux": "Linux",
+        "custom": "Custom command"
+      }
+    },
+    "ssh_auth": {
+      "options": {
+        "password": "Password",
+        "key": "Private key file"
+      }
+    }
+  }
+}
