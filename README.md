@@ -1,5 +1,7 @@
 # PC Power（WoL + SSH）
 
+> 仓库：https://github.com/keep120/home-assistant-pc-power
+
 一个 Home Assistant 自定义集成：**每台电脑只生成一个开关实体**，开=网络唤醒、关=SSH 关机、状态=实时探测。全部在图形界面里配置，不需要写 YAML。
 
 - 多台电脑：每台添加一次，各自一个设备 + 一个开关
