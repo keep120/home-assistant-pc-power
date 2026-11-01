@@ -41,8 +41,9 @@ METHODS = [METHOD_SSH, METHOD_NONE]
 
 OS_WINDOWS = "windows"
 OS_LINUX = "linux"
+OS_MACOS = "macos"
 OS_CUSTOM = "custom"
-OS_TYPES = [OS_WINDOWS, OS_LINUX, OS_CUSTOM]
+OS_TYPES = [OS_WINDOWS, OS_LINUX, OS_MACOS, OS_CUSTOM]
 
 AUTH_PASSWORD = "password"
 AUTH_KEY = "key"
@@ -51,5 +52,6 @@ AUTH_TYPES = [AUTH_PASSWORD, AUTH_KEY]
 DEFAULT_SHUTDOWN_COMMANDS = {
     OS_WINDOWS: "shutdown /s /f /t 0",
     OS_LINUX: "sudo -n systemctl poweroff",
+    OS_MACOS: "pmset sleepnow",
     OS_CUSTOM: "",
 }

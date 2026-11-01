@@ -37,7 +37,7 @@
         "data_description": {
           "ssh_user": "Windows 建议用本地管理员账号，例如 pc，不要带域名前缀",
           "ssh_key": "Home Assistant 上的路径，例如 /config/.ssh/id_ed25519",
-          "custom_command": "留空则使用系统默认命令：Windows 为 shutdown /s /f /t 0"
+          "custom_command": "留空则用默认命令：Windows 为 shutdown /s /f /t 0，macOS 为 pmset sleepnow（Mac 关机后无法网络唤醒，只能睡眠）"
         }
       }
     },
@@ -89,7 +89,7 @@
         "data_description": {
           "ssh_user": "Windows 建议用本地管理员账号，例如 pc，不要带域名前缀",
           "ssh_key": "Home Assistant 上的路径，例如 /config/.ssh/id_ed25519",
-          "custom_command": "留空则使用系统默认命令：Windows 为 shutdown /s /f /t 0"
+          "custom_command": "留空则用默认命令：Windows 为 shutdown /s /f /t 0，macOS 为 pmset sleepnow（Mac 关机后无法网络唤醒，只能睡眠）"
         }
       }
     },
@@ -112,6 +112,7 @@
       "options": {
         "windows": "Windows",
         "linux": "Linux",
+        "macos": "macOS（睡眠）",
         "custom": "自定义命令"
       }
     },

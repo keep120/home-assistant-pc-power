@@ -37,7 +37,7 @@
         "data_description": {
           "ssh_user": "On Windows use a local administrator account, without a domain prefix",
           "ssh_key": "Path on the Home Assistant host, e.g. /config/.ssh/id_ed25519",
-          "custom_command": "Leave empty to use the default: shutdown /s /f /t 0 on Windows"
+          "custom_command": "Leave empty for the default: shutdown /s /f /t 0 on Windows, pmset sleepnow on macOS (a Mac cannot be woken from a full shutdown)"
         }
       }
     },
@@ -89,7 +89,7 @@
         "data_description": {
           "ssh_user": "On Windows use a local administrator account, without a domain prefix",
           "ssh_key": "Path on the Home Assistant host, e.g. /config/.ssh/id_ed25519",
-          "custom_command": "Leave empty to use the default: shutdown /s /f /t 0 on Windows"
+          "custom_command": "Leave empty for the default: shutdown /s /f /t 0 on Windows, pmset sleepnow on macOS (a Mac cannot be woken from a full shutdown)"
         }
       }
     },
@@ -112,6 +112,7 @@
       "options": {
         "windows": "Windows",
         "linux": "Linux",
+        "macos": "macOS (sleep)",
         "custom": "Custom command"
       }
     },
